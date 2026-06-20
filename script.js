@@ -318,13 +318,15 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       
       // Store details
+      const adultsVal = document.getElementById('book-adults').value;
+      const childrenVal = document.getElementById('book-children').value;
       bookingData = {
         name: document.getElementById('book-name').value,
         phone: document.getElementById('book-phone').value,
         email: document.getElementById('book-email').value,
         checkin: document.getElementById('book-checkin').value,
         checkout: document.getElementById('book-checkout').value,
-        guests: document.getElementById('book-guests').value,
+        guests: `${adultsVal} Adult${adultsVal !== '1' ? 's' : ''}, ${childrenVal} Child${childrenVal !== '1' ? 'ren' : ''}`,
         roomVal: document.getElementById('book-room').value,
         totalText: document.getElementById('calc-total-price').textContent
       };
@@ -446,6 +448,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fill success receipt info
     document.getElementById('receipt-booking-id').textContent = bookingId;
     document.getElementById('receipt-guest-name').textContent = bookingData.name;
+    document.getElementById('receipt-guests').textContent = bookingData.guests;
     
     const roomLabels = { deluxe: 'Deluxe Room', executive: 'Executive Suite', family: 'Grand Family Suite' };
     document.getElementById('receipt-room-class').textContent = roomLabels[bookingData.roomVal] || 'Deluxe Room';

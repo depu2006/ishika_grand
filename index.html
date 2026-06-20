@@ -863,15 +863,25 @@
                             <input type="date" id="book-checkout" required>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row cols-3">
                         <div class="form-group">
-                            <label for="book-guests">Guests</label>
-                            <select id="book-guests">
-                                <option value="1">1 Guest</option>
-                                <option value="2">2 Guests</option>
-                                <option value="3">3 Guests</option>
-                                <option value="4">4 Guests</option>
-                                <option value="5+">5+ Guests</option>
+                            <label for="book-adults">Adults</label>
+                            <select id="book-adults">
+                                <option value="1">1 Adult</option>
+                                <option value="2" selected>2 Adults</option>
+                                <option value="3">3 Adults</option>
+                                <option value="4">4 Adults</option>
+                                <option value="5+">5+ Adults</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-children">Children</label>
+                            <select id="book-children">
+                                <option value="0" selected>0 Children</option>
+                                <option value="1">1 Child</option>
+                                <option value="2">2 Children</option>
+                                <option value="3">3 Children</option>
+                                <option value="4">4 Children</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1030,6 +1040,10 @@
                         <div class="receipt-row">
                             <span class="label">Guest Name:</span>
                             <span id="receipt-guest-name">John Doe</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="label">Occupancy:</span>
+                            <span id="receipt-guests">2 Adults, 0 Children</span>
                         </div>
                         <div class="receipt-row">
                             <span class="label">Room Class:</span>
