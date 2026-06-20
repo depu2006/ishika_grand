@@ -1,25 +1,1150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/assets/original_logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ishika Grand | Luxury Hotel, Restaurant & Banquet Hall in Hyderabad</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Welcome to Ishika Grand, Hyderabad. A premium destination featuring luxury rooms, authentic multi-cuisine restaurant, and grand banquet hall. Free Wi-Fi, Free breakfast, parking, and 24/7 service." />
-    <meta name="keywords" content="Ishika Grand, Hotel Ishika Grand, Annojiguda hotel, Hyderabad luxury hotel, banquet hall Hyderabad, restaurant Hyderabad, multi-cuisine restaurant" />
-
+    <meta name="description" content="Experience premium hospitality at Ishika Grand, Hyderabad. Featuring luxurious rooms, free Wi-Fi, breakfast, multi-cuisine restaurant, and a grand banquet hall. Book your stay today.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js (3D Graphics Library) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar"></div>
+
+    <!-- Glowing Gold Particles Background -->
+    <canvas id="gold-particles"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo-area">
+                <svg viewBox="0 0 200 200" class="logo-svg">
+                    <defs>
+                        <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe082" />
+                            <stop offset="50%" stop-color="#cda45e" />
+                            <stop offset="100%" stop-color="#8a6d3b" />
+                        </linearGradient>
+                        <filter id="glow-light" x="-10%" y="-10%" width="120%" height="120%">
+                            <feGaussianBlur stdDeviation="2" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Lotus Shape -->
+                    <g fill="url(#gold-grad)" filter="url(#glow-light)">
+                        <!-- Center Petal -->
+                        <path d="M 100,110 C 85,90 85,60 100,30 C 115,60 115,90 100,110 Z" />
+                        <!-- Left Petal -->
+                        <path d="M 95,110 C 65,105 50,85 55,60 C 65,80 80,95 95,110 Z" />
+                        <!-- Right Petal -->
+                        <path d="M 105,110 C 135,105 150,85 145,60 C 135,80 120,95 105,110 Z" />
+                    </g>
+                    <!-- Telugu Text -->
+                    <text x="100" y="150" font-family="'Noto Sans Telugu', sans-serif" font-size="28" font-weight="bold" fill="url(#gold-grad)" text-anchor="middle" filter="url(#glow-light)">ఇషిక</text>
+                    <!-- English Subtext -->
+                    <text x="100" y="180" font-family="'Inter', sans-serif" font-size="12" font-weight="600" letter-spacing="4" fill="#cda45e" text-anchor="middle">GRAND</text>
+                </svg>
+                <div class="logo-text">
+                    <span class="telugu-brand">ఇషిక</span>
+                    <span class="english-brand">ISHIKA GRAND</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#rooms" class="nav-link">Rooms</a>
+                <a href="#amenities" class="nav-link">Amenities</a>
+                <a href="#dining" class="nav-link">Dining</a>
+                <a href="#banquet" class="nav-link">Banquet</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="tel:09581756678" class="phone-link">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 95817 56678</span>
+                </a>
+                <button class="btn btn-gold open-booking-btn">Book A Room</button>
+                <button class="mobile-menu-toggle" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer">
+        <div class="drawer-header">
+            <div class="drawer-logo">
+                <span class="telugu-brand">ఇషిక</span>
+                <span class="english-brand">ISHIKA GRAND</span>
+            </div>
+            <button class="close-drawer-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#hero" class="drawer-link">Home</a>
+            <a href="#about" class="drawer-link">About</a>
+            <a href="#rooms" class="drawer-link">Rooms</a>
+            <a href="#amenities" class="drawer-link">Amenities</a>
+            <a href="#dining" class="drawer-link">Dining</a>
+            <a href="#banquet" class="drawer-link">Banquet</a>
+            <a href="#gallery" class="drawer-link">Gallery</a>
+            <a href="#contact" class="drawer-link">Contact</a>
+            <a href="tel:09581756678" class="drawer-phone-btn">
+                <i class="fa-solid fa-phone"></i> Call +91 95817 56678
+            </a>
+            <button class="btn btn-gold open-booking-btn w-full mt-4">Book A Room</button>
+        </nav>
+    </div>
+    <div class="drawer-overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-overlay" style="background-image: url('assets/building.jpg');"></div>
+        <div class="hero-tint"></div>
+        
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <!-- Large Glowing Lotus Logo -->
+                <div class="hero-logo-wrapper">
+                    <svg viewBox="0 0 200 200" class="hero-logo-svg">
+                        <defs>
+                            <linearGradient id="gold-grad-large" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fff4d0" />
+                                <stop offset="50%" stop-color="#d4af37" />
+                                <stop offset="100%" stop-color="#a88434" />
+                            </linearGradient>
+                            <filter id="glow-heavy" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="3" result="blur1" />
+                                <feGaussianBlur stdDeviation="1.5" result="blur2" />
+                                <feMerge>
+                                    <feMergeNode in="blur1" />
+                                    <feMergeNode in="blur2" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Glowing lotus petals -->
+                        <g fill="url(#gold-grad-large)" filter="url(#glow-heavy)">
+                            <path d="M 100,105 C 83,82 83,48 100,15 C 117,48 117,82 100,105 Z" />
+                            <path d="M 94,105 C 60,99 43,77 49,49 C 60,71 77,88 94,105 Z" />
+                            <path d="M 106,105 C 140,99 157,77 151,49 C 140,71 123,88 106,105 Z" />
+                        </g>
+                        <!-- Glowing Telugu Text -->
+                        <text x="100" y="152" font-family="'Noto Sans Telugu', sans-serif" font-size="36" font-weight="bold" fill="url(#gold-grad-large)" text-anchor="middle" filter="url(#glow-heavy)">ఇషిక</text>
+                        <!-- Subtext -->
+                        <text x="100" y="185" font-family="'Inter', sans-serif" font-size="14" font-weight="600" letter-spacing="6" fill="#ffe29a" text-anchor="middle">GRAND</text>
+                    </svg>
+                </div>
+
+                <span class="hero-subtitle">WELCOME TO GOLDEN HOSPITALITY</span>
+                <h1 class="hero-title">A Sanctuary of Comfort <br>& Elegance in Hyderabad</h1>
+                <p class="hero-description">Experience premium rooms, exquisite multi-cuisine dining, and magnificent banquet spaces tailored to your special moments.</p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-gold btn-lg open-booking-btn">Explore Rooms & Book</button>
+                    <a href="#contact" class="btn btn-outline btn-lg">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Floating Booking Bar -->
+            <div class="quick-booking-bar fade-in-up delay-200">
+                <form id="hero-quick-book-form" class="booking-grid">
+                    <div class="booking-field">
+                        <label for="quick-check-in"><i class="fa-solid fa-calendar-check"></i> Check In</label>
+                        <input type="date" id="quick-check-in" required>
+                    </div>
+                    <div class="booking-field">
+                        <label for="quick-check-out"><i class="fa-solid fa-calendar-xmark"></i> Check Out</label>
+                        <input type="date" id="quick-check-out" required>
+                    </div>
+                    <div class="booking-field">
+                        <label for="quick-guests"><i class="fa-solid fa-users"></i> Guests</label>
+                        <select id="quick-guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5+">5+ Guests</option>
+                        </select>
+                    </div>
+                    <div class="booking-field">
+                        <label for="quick-room-type"><i class="fa-solid fa-bed"></i> Space Type</label>
+                        <select id="quick-room-type">
+                            <option value="deluxe">Deluxe Room</option>
+                            <option value="executive">Executive Suite</option>
+                            <option value="family">Grand Family Suite</option>
+                            <option value="banquet">Banquet Hall Event</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-block">
+                        <span>Check Availability</span>
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="mouse-wheel"></span>
+            <span class="label">Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <div class="grid-2col align-center">
+                <div class="about-images-wrapper reveal-left">
+                    <div class="about-img-main">
+                        <img src="assets/building.jpg" alt="Hotel Ishika Grand Building" class="img-responsive rounded">
+                        <div class="about-img-overlay"></div>
+                        <div class="badge-experience">
+                            <span class="years">★ ★ ★ ★ ★</span>
+                            <span class="text">Top Rated Stay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text-content reveal-right">
+                    <div class="section-header">
+                        <span class="sub-title">Discover Ishika Grand</span>
+                        <h2 class="title-decor">Premium Stay and Events In Hyderabad</h2>
+                    </div>
+                    <p class="lead-text">Conveniently situated in Annojiguda, Ishika Grand offers an exquisite blend of modern luxury, personalized service, and exceptional comfort.</p>
+                    <p>Whether you are visiting Secunderabad & Hyderabad for a business trip, family vacation, or planning a grand ceremony in our premium banquet hall, our dedicated staff ensures a seamless experience with top-tier amenities.</p>
+                    
+                    <div class="about-highlights-grid">
+                        <div class="highlight-item">
+                            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="item-text">
+                                <h4>Prime Location</h4>
+                                <p>Easy access from Annojiguda, Secunderabad, and Hyderabad bypasses.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="icon-box"><i class="fa-solid fa-utensils"></i></div>
+                            <div class="item-text">
+                                <h4>Multicuisine Dining</h4>
+                                <p>Delicious free breakfast and delicious restaurant dishes.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="icon-box"><i class="fa-solid fa-champagne-glasses"></i></div>
+                            <div class="item-text">
+                                <h4>Grand Banquet Hall</h4>
+                                <p>Host up to 500+ guests for weddings, parties, and conferences.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#rooms" class="btn btn-gold mt-6">Explore Our Spaces</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="rooms-section section-padding alt-bg">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">Accommodations</span>
+                <h2 class="title-decor">Our Luxurious Rooms & Suites</h2>
+                <p class="header-p">Every space is designed with absolute attention to detail, featuring warm golden backlight ambiance and modern facilities.</p>
+            </div>
+
+            <div class="grid-3col mt-8">
+                <!-- Deluxe Room -->
+                <div class="room-card card-hover reveal-up">
+                    <div class="room-img-container">
+                        <img src="assets/room.png" alt="Deluxe Room at Ishika Grand" class="img-responsive">
+                        <div class="room-tag">Best Value</div>
+                        <div class="room-price">
+                            <span class="price">₹2,499</span>
+                            <span class="period">/ Night</span>
+                        </div>
+                    </div>
+                    <div class="room-details">
+                        <h3>Deluxe AC Room</h3>
+                        <p>Comfortable and elegant room perfect for solo travelers or couples looking for a cozy stay with modern touches.</p>
+                        <div class="room-amenity-icons">
+                            <span title="Wi-Fi"><i class="fa-solid fa-wifi"></i></span>
+                            <span title="Air-Conditioned"><i class="fa-solid fa-snowflake"></i></span>
+                            <span title="Free Breakfast"><i class="fa-solid fa-coffee"></i></span>
+                            <span title="Room Service"><i class="fa-solid fa-bell"></i></span>
+                        </div>
+                        <hr class="card-divider">
+                        <div class="room-footer">
+                            <span class="room-size"><i class="fa-solid fa-maximize"></i> 280 sq.ft</span>
+                            <button class="btn btn-outline-gold btn-sm open-booking-btn" data-room="deluxe">Book Stay</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive Suite -->
+                <div class="room-card card-hover reveal-up delay-100">
+                    <div class="room-img-container">
+                        <img src="assets/room.png" alt="Executive Suite at Ishika Grand" class="img-responsive" style="filter: hue-rotate(15deg);">
+                        <div class="room-tag premium">Most Popular</div>
+                        <div class="room-price">
+                            <span class="price">₹3,999</span>
+                            <span class="period">/ Night</span>
+                        </div>
+                    </div>
+                    <div class="room-details">
+                        <h3>Executive Suite</h3>
+                        <p>Spacious luxury living area, scenic views, upscale furnishings, and an immersive warm ambient light scheme.</p>
+                        <div class="room-amenity-icons">
+                            <span title="Wi-Fi"><i class="fa-solid fa-wifi"></i></span>
+                            <span title="Air-Conditioned"><i class="fa-solid fa-snowflake"></i></span>
+                            <span title="Free Breakfast"><i class="fa-solid fa-coffee"></i></span>
+                            <span title="Room Service"><i class="fa-solid fa-bell"></i></span>
+                            <span title="Premium Bar"><i class="fa-solid fa-glass-water"></i></span>
+                        </div>
+                        <hr class="card-divider">
+                        <div class="room-footer">
+                            <span class="room-size"><i class="fa-solid fa-maximize"></i> 450 sq.ft</span>
+                            <button class="btn btn-outline-gold btn-sm open-booking-btn" data-room="executive">Book Stay</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grand Family Suite -->
+                <div class="room-card card-hover reveal-up delay-200">
+                    <div class="room-img-container">
+                        <img src="assets/room.png" alt="Grand Family Suite at Ishika Grand" class="img-responsive" style="filter: hue-rotate(30deg) brightness(0.95);">
+                        <div class="room-tag luxury">Ultra Luxury</div>
+                        <div class="room-price">
+                            <span class="price">₹5,499</span>
+                            <span class="period">/ Night</span>
+                        </div>
+                    </div>
+                    <div class="room-details">
+                        <h3>Grand Family Suite</h3>
+                        <p>The pinnacle of space and comfort. Two double beds, premium lounge seating, laundry privileges, and superior room service.</p>
+                        <div class="room-amenity-icons">
+                            <span title="Wi-Fi"><i class="fa-solid fa-wifi"></i></span>
+                            <span title="Air-Conditioned"><i class="fa-solid fa-snowflake"></i></span>
+                            <span title="Free Breakfast"><i class="fa-solid fa-coffee"></i></span>
+                            <span title="Laundry Service"><i class="fa-solid fa-shirt"></i></span>
+                            <span title="Room Service"><i class="fa-solid fa-bell"></i></span>
+                            <span title="Car Parking"><i class="fa-solid fa-car"></i></span>
+                        </div>
+                        <hr class="card-divider">
+                        <div class="room-footer">
+                            <span class="room-size"><i class="fa-solid fa-maximize"></i> 650 sq.ft</span>
+                            <button class="btn btn-outline-gold btn-sm open-booking-btn" data-room="family">Book Stay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Grid Section -->
+    <section id="amenities" class="amenities-section section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">Guest Privileges</span>
+                <h2 class="title-decor">Premium Services & Amenities</h2>
+                <p class="header-p">We provide everything you need for a relaxing, high-end stay at Ishika Grand.</p>
+            </div>
+
+            <div class="grid-3col mt-8">
+                <!-- WiFi -->
+                <div class="amenity-box card-hover reveal-up">
+                    <div class="amenity-icon-glow">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <h3>High-Speed Free Wi-Fi</h3>
+                    <p>Stay connected with high-speed wireless internet throughout the hotel rooms, dining areas, and banquet hall.</p>
+                </div>
+
+                <!-- Free Breakfast -->
+                <div class="amenity-box card-hover reveal-up delay-100">
+                    <div class="amenity-icon-glow">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h3>Free Gourmet Breakfast</h3>
+                    <p>Enjoy a delicious morning spread with premium South Indian delicacies, continental treats, and fresh coffee.</p>
+                </div>
+
+                <!-- Parking -->
+                <div class="amenity-box card-hover reveal-up delay-200">
+                    <div class="amenity-icon-glow">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <h3>Secure Free Parking</h3>
+                    <p>Spacious, secure parking facility guarded 24/7 for all our staying guests and banquet event attendees.</p>
+                </div>
+
+                <!-- AC -->
+                <div class="amenity-box card-hover reveal-up">
+                    <div class="amenity-icon-glow">
+                        <i class="fa-solid fa-snowflake"></i>
+                    </div>
+                    <h3>Air-Conditioned Spaces</h3>
+                    <p>All rooms, suites, restaurant, and banquet halls are fully air-conditioned for your comfortable escape from heat.</p>
+                </div>
+
+                <!-- Laundry Service -->
+                <div class="amenity-box card-hover reveal-up delay-100">
+                    <div class="amenity-icon-glow">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <h3>Professional Laundry</h3>
+                    <p>Same-day professional laundry, dry-cleaning, and pressing services to keep you looking sharp and fresh.</p>
+                </div>
+
+                <!-- Room Service -->
+                <div class="amenity-box card-hover reveal-up delay-200">
+                    <div class="amenity-icon-glow">
+                        <i class="fa-solid fa-bell-concierge"></i>
+                    </div>
+                    <h3>24/7 Prompt Room Service</h3>
+                    <p>Craving a late-night snack or morning tea? Enjoy gourmet dishes delivered straight to your door with a single call.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Section -->
+    <section id="dining" class="dining-section section-padding alt-bg">
+        <div class="container">
+            <div class="grid-2col align-center">
+                <div class="dining-content reveal-left">
+                    <div class="section-header">
+                        <span class="sub-title">Culinary Delights</span>
+                        <h2 class="title-decor">Ishika Multi-Cuisine Restaurant</h2>
+                        <p class="lead-text">Experience signature Hyderabadi dishes, authentic South Indian breakfast, and dynamic continental dishes crafted by expert chefs.</p>
+                    </div>
+
+                    <!-- Dining Menu Tabs -->
+                    <div class="menu-tabs">
+                        <button class="menu-tab-btn active" data-tab="breakfast">Breakfast</button>
+                        <button class="menu-tab-btn" data-tab="lunch">Lunch & Dinner</button>
+                        <button class="menu-tab-btn" data-tab="specialties">Specialties</button>
+                    </div>
+
+                    <div class="menu-tabs-content">
+                        <!-- Breakfast Tab -->
+                        <div class="tab-pane active" id="breakfast">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Traditional Ghee Roast Dosa</span>
+                                    <span class="dish-price">₹120</span>
+                                </div>
+                                <p class="dish-desc">Crispy golden crepe served with ghee, delicious sambar, and three varieties of fresh chutneys.</p>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Idli Sambar Platter</span>
+                                    <span class="dish-price">₹90</span>
+                                </div>
+                                <p class="dish-desc">Steamed fluffy rice cakes soaked in spiced lentil soup and topped with pure ghee.</p>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Ishika Grand Continental Breakfast</span>
+                                    <span class="dish-price">₹220</span>
+                                </div>
+                                <p class="dish-desc">Toast, double eggs cooked to order, chicken sausage, grilled tomato, juice, and filter coffee.</p>
+                            </div>
+                        </div>
+
+                        <!-- Lunch Tab -->
+                        <div class="tab-pane" id="lunch">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Hyderabadi Chicken Dum Biryani</span>
+                                    <span class="dish-price">₹320</span>
+                                </div>
+                                <p class="dish-desc">Aromatic long grain basmati rice layered with spiced tender chicken, cooked slowly in dum style.</p>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Special South Indian Thali</span>
+                                    <span class="dish-price">₹250</span>
+                                </div>
+                                <p class="dish-desc">Traditional lunch meals served with rice, sambar, rasam, curries, dry sabzi, curd, papad, and sweet.</p>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Paneer Butter Masala & Butter Naan</span>
+                                    <span class="dish-price">₹280</span>
+                                </div>
+                                <p class="dish-desc">Creamy, rich tomato-based cottage cheese curry served with hot clay-oven baked butter naan.</p>
+                            </div>
+                        </div>
+
+                        <!-- Specialties Tab -->
+                        <div class="tab-pane" id="specialties">
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Ishika Royal Kabab Platter</span>
+                                    <span class="dish-price">₹450</span>
+                                </div>
+                                <p class="dish-desc">Assortment of Malai Kabab, Seekh Kabab, and Tandoori Tikka served with mint chutney.</p>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-item-header">
+                                    <span class="dish-name">Nellore Fish Curry</span>
+                                    <span class="dish-price">₹380</span>
+                                </div>
+                                <p class="dish-desc">Tangy and spicy fish cooked in traditional tamarind gravy, a classic coastal Andhra delicacy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dining-image-side reveal-right">
+                    <div class="image-frame-gold">
+                        <img src="assets/restaurant_interior.jpg" alt="Ishika Grand Multi-Cuisine Restaurant" class="img-responsive rounded">
+                        <div class="dining-time-tag">
+                            <i class="fa-regular fa-clock"></i> Open Daily: 7:00 AM - 11:00 PM
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Signature Dishes Showcase -->
+            <div class="signature-section mt-8 reveal-up">
+                <h3 class="signature-title"><i class="fa-solid fa-star"></i> Chef's Signature Recommendations</h3>
+                <div class="signature-grid">
+                    <!-- Dish 1 -->
+                    <div class="signature-card">
+                        <div class="sig-img-container">
+                            <img src="assets/pulao.png" alt="Raju Gari Kodi Pulao">
+                        </div>
+                        <div class="sig-details">
+                            <h4>Raju Gari Kodi Pulao</h4>
+                            <p>A spicy, aromatic traditional Andhra chicken rice dish cooked with signature spice-blends and served with raita.</p>
+                            <span class="sig-price">₹340</span>
+                        </div>
+                    </div>
+                    <!-- Dish 2 -->
+                    <div class="signature-card">
+                        <div class="sig-img-container">
+                            <img src="assets/chicken_fry.jpg" alt="Nalla Miriyala Kodi Vepudu">
+                        </div>
+                        <div class="sig-details">
+                            <h4>Nalla Miriyala Kodi Vepudu</h4>
+                            <p>Tender chicken pieces tossed in freshly ground black pepper (nalla miriyalu) and traditional spices. Crispy and spicy.</p>
+                            <span class="sig-price">₹290</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banquet Hall Section -->
+    <section id="banquet" class="banquet-section section-padding">
+        <div class="container">
+            <div class="grid-2col align-center">
+                <div class="banquet-image-side order-mobile-2 reveal-left">
+                    <div class="image-frame-gold">
+                        <img src="assets/banquet.png" alt="Ishika Grand Banquet Hall" class="img-responsive rounded">
+                        <div class="capacity-tag">
+                            <i class="fa-solid fa-users"></i> Up to 500 Guests
+                        </div>
+                    </div>
+                </div>
+
+                <div class="banquet-content order-mobile-1 reveal-right">
+                    <div class="section-header">
+                        <span class="sub-title">Celebrations & Events</span>
+                        <h2 class="title-decor">Grand Celebrations & Corporate Events</h2>
+                        <p class="lead-text">From grand weddings and reception celebrations to intimate corporate events, workshops, and birthday milestones, make them unforgettable.</p>
+                    </div>
+                    <p>Our air-conditioned banquet hall is equipped with modern acoustics, lighting arrangements, premium catering options, and customized decor services. Our event planning experts work behind the scenes to make sure your celebration flows flawlessly.</p>
+                    
+                    <ul class="banquet-checklist">
+                        <li><i class="fa-solid fa-check"></i> Custom Wedding & Reception Themes</li>
+                        <li><i class="fa-solid fa-check"></i> High-End Audio & Visual Equipment</li>
+                        <li><i class="fa-solid fa-check"></i> In-House Gourmet Multi-Cuisine Catering</li>
+                        <li><i class="fa-solid fa-check"></i> Luxurious Changing Rooms for Hosts</li>
+                    </ul>
+
+                    <button class="btn btn-gold btn-lg mt-6 open-enquiry-btn">Enquire About Bookings</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section section-padding alt-bg">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">Visual Tour</span>
+                <h2 class="title-decor">A Glimpse of Ishika Grand</h2>
+                <p class="header-p">Take a visual tour through our premium spaces, authentic dining ambiance, and delicious cuisines.</p>
+            </div>
+
+            <div class="gallery-grid mt-8">
+                <!-- Item 1: Building -->
+                <div class="gallery-item reveal-up" data-src="assets/building.jpg">
+                    <img src="assets/building.jpg" alt="Hotel Ishika Grand Building Exterior">
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Building Exterior</span>
+                    </div>
+                </div>
+                <!-- Item 2: Dining Interior -->
+                <div class="gallery-item reveal-up delay-100" data-src="assets/restaurant_interior.jpg">
+                    <img src="assets/restaurant_interior.jpg" alt="Multi-Cuisine Restaurant Ambiance">
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Restaurant Interior</span>
+                    </div>
+                </div>
+                <!-- Item 3: Table close up -->
+                <div class="gallery-item reveal-up delay-200" data-src="assets/dining_table.png">
+                    <img src="assets/dining_table.png" alt="Premium Dining Table Setup">
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Table Arrangement</span>
+                    </div>
+                </div>
+                <!-- Item 4: Original Backlit Logo Sign -->
+                <div class="gallery-item reveal-up" data-src="assets/original_logo.png">
+                    <img src="assets/original_logo.png" alt="Ishika Grand Backlit Logo Sign">
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Glowing Hotel Sign</span>
+                    </div>
+                </div>
+                <!-- Item 5: Pulao -->
+                <div class="gallery-item reveal-up delay-100" data-src="assets/pulao.png">
+                    <img src="assets/pulao.png" alt="Signature Raju Gari Kodi Pulao">
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Raju Gari Kodi Pulao</span>
+                    </div>
+                </div>
+                <!-- Item 6: Chicken Fry -->
+                <div class="gallery-item reveal-up delay-200" data-src="assets/chicken_fry.jpg">
+                    <img src="assets/chicken_fry.jpg" alt="Signature Nalla Miriyala Kodi Vepudu">
+                    <div class="gallery-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        <span>Nalla Miriyala Kodi Vepudu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="contact-section section-padding alt-bg">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">Get In Touch</span>
+                <h2 class="title-decor">Contact & Location Details</h2>
+                <p class="header-p">Find us easily or drop us a message to clarify your booking questions.</p>
+            </div>
+
+            <div class="grid-2col mt-8">
+                <!-- Contact Details & Form -->
+                <div class="contact-details-form reveal-left">
+                    <div class="contact-info-cards">
+                        <div class="info-card-horizontal">
+                            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="text-box">
+                                <h3>Hotel Address</h3>
+                                <p>2-21, Annojiguda, Hyderabad, Secunderabad, Telangana 500088</p>
+                            </div>
+                        </div>
+
+                        <div class="info-card-horizontal">
+                            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                            <div class="text-box">
+                                <h3>Direct Phone</h3>
+                                <p><a href="tel:09581756678" class="contact-link">095817 56678</a></p>
+                            </div>
+                        </div>
+
+                        <div class="info-card-horizontal">
+                            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="text-box">
+                                <h3>Email Enquiry</h3>
+                                <p><a href="mailto:info@ishikagrand.com" class="contact-link">info@ishikagrand.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" class="luxury-form mt-6">
+                        <h3>Send a Message</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Your Name</label>
+                                <input type="text" id="contact-name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" placeholder="095817 56678" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email Address</label>
+                            <input type="email" id="contact-email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Topic</label>
+                            <select id="contact-subject">
+                                <option value="stay">Room Reservation</option>
+                                <option value="banquet">Banquet Hall Booking</option>
+                                <option value="restaurant">Restaurant Table / Party</option>
+                                <option value="other">General Query</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message Details</label>
+                            <textarea id="contact-message" rows="4" placeholder="How can we assist you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-block">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Google Maps Embed -->
+                <div class="map-container-wrapper reveal-right">
+                    <div class="map-card-gold">
+                        <!-- Embedded Google Map pointing to 2-21, Annojiguda, Hyderabad -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.9048037142513!2d78.65345791168128!3d17.416353283398322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9f7831f24d77%3A0xe54d90956ee937bd!2sHotel%20Ishika%20Grand!5e0!3m2!1sen!2sin!4v1718180456123!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="map-caption">
+                        <i class="fa-solid fa-compass"></i>
+                        <span>Located prominently near Warangal Highway, Annojiguda.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container footer-top">
+            <div class="footer-grid">
+                <div class="footer-brand-col">
+                    <div class="footer-logo">
+                        <span class="telugu-brand">ఇషిక</span>
+                        <span class="english-brand">ISHIKA GRAND</span>
+                    </div>
+                    <p class="brand-desc">A premium hotel, multicuisine dining experience, and grand banquet events sanctuary located in Hyderabad, Secunderabad, Telangana.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h3>Explore Sections</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Hotel</a></li>
+                        <li><a href="#rooms">Rooms & Suites</a></li>
+                        <li><a href="#amenities">Hotel Amenities</a></li>
+                        <li><a href="#dining">Restaurant</a></li>
+                        <li><a href="#banquet">Banquet Hall</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-services-col">
+                    <h3>Services & Facilities</h3>
+                    <ul class="footer-links">
+                        <li><span>Free Wi-Fi Internet</span></li>
+                        <li><span>Free Breakfast</span></li>
+                        <li><span>Secure Car Parking</span></li>
+                        <li><span>Fully Air-Conditioned</span></li>
+                        <li><span>Laundry Service</span></li>
+                        <li><span>24/7 Room Service</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact-col">
+                    <h3>Hotel Contact</h3>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <i class="fa-solid fa-map-marker-alt"></i>
+                            <span>2-21, Annojiguda, Hyderabad, Secunderabad, Telangana 500088</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:09581756678">095817 56678</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@ishikagrand.com">info@ishikagrand.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 Ishika Grand. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Room Booking Modal -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            
+            <!-- Step Indicators -->
+            <div class="booking-steps-indicator">
+                <div class="step-dot active" id="dot-step-1"><span>1</span><label>Details</label></div>
+                <div class="step-line" id="line-step-1"></div>
+                <div class="step-dot" id="dot-step-2"><span>2</span><label>Payment</label></div>
+                <div class="step-line" id="line-step-2"></div>
+                <div class="step-dot" id="dot-step-3"><span>3</span><label>Receipt</label></div>
+            </div>
+
+            <!-- STEP 1: Guest & Room Details -->
+            <div id="booking-step-1" class="booking-step-pane active">
+                <div class="modal-header">
+                    <h2>Reserve Your Luxury Stay</h2>
+                    <p>Enter your details and select your dates to check real-time availability.</p>
+                </div>
+                <form id="modal-booking-form" class="luxury-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-name">Full Name</label>
+                            <input type="text" id="book-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-phone">Phone Number</label>
+                            <input type="tel" id="book-phone" placeholder="095817 56678" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-email">Email Address</label>
+                        <input type="email" id="book-email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-checkin">Check-in Date</label>
+                            <input type="date" id="book-checkin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-checkout">Check-out Date</label>
+                            <input type="date" id="book-checkout" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-guests">Guests</label>
+                            <select id="book-guests">
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Guests</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-room">Room Class</label>
+                            <select id="book-room">
+                                <option value="deluxe">Deluxe Room (₹2,499/night)</option>
+                                <option value="executive">Executive Suite (₹3,999/night)</option>
+                                <option value="family">Grand Family Suite (₹5,499/night)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="price-calculation-card">
+                        <div class="calc-row">
+                            <span class="calc-label"><span id="calc-room-name">Deluxe Room</span> x <span id="calc-days">1</span> night(s)</span>
+                            <span id="calc-base-price">₹2,499</span>
+                        </div>
+                        <div class="calc-row">
+                            <span class="calc-label">GST & Service Charge (12%)</span>
+                            <span id="calc-tax-price">₹300</span>
+                        </div>
+                        <hr>
+                        <div class="calc-row total">
+                            <span>Estimated Total</span>
+                            <span id="calc-total-price">₹2,799</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-gold btn-block">Proceed to Secure Payment</button>
+                </form>
+            </div>
+
+            <!-- STEP 2: Secure Payment Gateway -->
+            <div id="booking-step-2" class="booking-step-pane">
+                <div class="modal-header">
+                    <h2>Secure Payment Gateway</h2>
+                    <p>Select your preferred payment method to complete the booking instantly.</p>
+                </div>
+                
+                <div class="payment-summary-box">
+                    <span>Payable Amount (Inclusive of Taxes):</span>
+                    <strong class="payment-total-amount">₹2,799</strong>
+                </div>
+
+                <div class="payment-methods-tabs">
+                    <button type="button" class="pay-tab active" id="tab-pay-upi">
+                        <i class="fa-solid fa-qrcode"></i> UPI (GPay / PhonePe)
+                    </button>
+                    <button type="button" class="pay-tab" id="tab-pay-card">
+                        <i class="fa-regular fa-credit-card"></i> Credit / Debit Card
+                    </button>
+                </div>
+
+                <!-- UPI Payment Method Pane -->
+                <div id="pay-pane-upi" class="pay-method-pane active">
+                    <div class="upi-qr-wrapper">
+                        <div class="qr-code-box">
+                            <svg viewBox="0 0 100 100" class="simulated-qr">
+                                <rect width="100" height="100" fill="#fff" />
+                                <rect x="8" y="8" width="24" height="24" fill="#0c0a09" />
+                                <rect x="12" y="12" width="16" height="16" fill="#fff" />
+                                <rect x="15" y="15" width="10" height="10" fill="#0c0a09" />
+                                
+                                <rect x="68" y="8" width="24" height="24" fill="#0c0a09" />
+                                <rect x="72" y="12" width="16" height="16" fill="#fff" />
+                                <rect x="75" y="15" width="10" height="10" fill="#0c0a09" />
+                                
+                                <rect x="8" y="68" width="24" height="24" fill="#0c0a09" />
+                                <rect x="12" y="72" width="16" height="16" fill="#fff" />
+                                <rect x="15" y="75" width="10" height="10" fill="#0c0a09" />
+                                
+                                <rect x="36" y="20" width="8" height="8" fill="#0c0a09" />
+                                <rect x="48" y="12" width="12" height="8" fill="#0c0a09" />
+                                <rect x="36" y="36" width="20" height="12" fill="#0c0a09" />
+                                <rect x="60" y="36" width="8" height="24" fill="#0c0a09" />
+                                <rect x="12" y="48" width="16" height="8" fill="#0c0a09" />
+                                <rect x="36" y="56" width="12" height="16" fill="#0c0a09" />
+                                <rect x="52" y="68" width="28" height="8" fill="#0c0a09" />
+                                <rect x="68" y="52" width="8" height="12" fill="#0c0a09" />
+                                <rect x="56" y="80" width="12" height="12" fill="#0c0a09" />
+                            </svg>
+                            <div class="qr-logo-overlay">
+                                <span class="qr-logo-text">UPI</span>
+                            </div>
+                        </div>
+                        <div class="upi-instructions">
+                            <p class="scan-text">Scan the QR code with GPay, PhonePe, or BHIM to pay <strong>Ishika Grand Hotel</strong>.</p>
+                            <p class="timer-text"><i class="fa-solid fa-clock"></i> QR code expires in <span id="upi-timer">05:00</span></p>
+                        </div>
+                    </div>
+                    <form id="upi-payment-form" class="luxury-form">
+                        <div class="form-group">
+                            <label for="upi-utr">Transaction Reference (UTR Number)</label>
+                            <input type="text" id="upi-utr" placeholder="Enter 12-digit UTR number" maxlength="12" required pattern="\d{12}">
+                            <small class="form-help">Found in your payment app transaction details</small>
+                        </div>
+                        <div class="payment-actions">
+                            <button type="button" class="btn btn-outline back-to-step1">Back</button>
+                            <button type="submit" class="btn btn-gold">Verify & Complete Booking</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Card Payment Method Pane -->
+                <div id="pay-pane-card" class="pay-method-pane">
+                    <form id="card-payment-form" class="luxury-form">
+                        <div class="form-group">
+                            <label for="card-name">Cardholder Name</label>
+                            <input type="text" id="card-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <div class="card-input-wrapper">
+                                <input type="text" id="card-number" placeholder="4111 2222 3333 4444" maxlength="19" required>
+                                <span class="card-brand-icon" id="card-brand-icon-slot"><i class="fa-regular fa-credit-card"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Expiry Date</label>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv">CVV</label>
+                                <input type="password" id="card-cvv" placeholder="•••" maxlength="3" required>
+                            </div>
+                        </div>
+                        <div class="payment-actions">
+                            <button type="button" class="btn btn-outline back-to-step1">Back</button>
+                            <button type="submit" class="btn btn-gold">Pay & Confirm Booking</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- STEP 3: Booking Success Receipt -->
+            <div id="booking-step-3" class="booking-step-pane">
+                <div class="receipt-success-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="modal-header">
+                    <h2 class="text-glow-green">Booking Confirmed!</h2>
+                    <p>Your payment has been verified. Welcome to Ishika Grand!</p>
+                </div>
+                
+                <div class="receipt-card">
+                    <div class="receipt-header">
+                        <span class="brand">ISHIKA GRAND</span>
+                        <span class="status-badge">PAID</span>
+                    </div>
+                    <div class="receipt-body">
+                        <div class="receipt-row">
+                            <span class="label">Booking ID:</span>
+                            <strong id="receipt-booking-id">IG-2026-X83K</strong>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="label">Guest Name:</span>
+                            <span id="receipt-guest-name">John Doe</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="label">Room Class:</span>
+                            <span id="receipt-room-class">Deluxe Room</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="label">Dates:</span>
+                            <span id="receipt-dates">Jun 21, 2026 - Jun 22, 2026</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="label">Total Paid:</span>
+                            <strong id="receipt-total-amount" class="text-gold">₹2,799</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="receipt-actions">
+                    <button class="btn btn-gold btn-block" id="btn-print-receipt"><i class="fa-solid fa-download"></i> Download PDF Receipt</button>
+                    <button class="btn btn-outline btn-block close-booking-done-btn">Close Window</button>
+                </div>
+            </div>
+            
+            <!-- STEP PROCESSING OVERLAY -->
+            <div class="booking-loading-overlay" id="booking-loading">
+                <div class="spinner-gold"></div>
+                <h3>Processing Secure Payment</h3>
+                <p>Connecting to secure server & verifying details. Please do not close or refresh this page...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banquet Enquiry Modal -->
+    <div id="enquiry-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <div class="modal-header">
+                <h2>Banquet Hall Enquiry</h2>
+                <p>Plan your grand wedding, reception, or corporate function with us.</p>
+            </div>
+            <form id="modal-enquiry-form" class="luxury-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="enquiry-name">Full Name</label>
+                        <input type="text" id="enquiry-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enquiry-phone">Phone Number</label>
+                        <input type="tel" id="enquiry-phone" placeholder="095817 56678" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="enquiry-email">Email Address</label>
+                    <input type="email" id="enquiry-email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="enquiry-date">Event Date</label>
+                        <input type="date" id="enquiry-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enquiry-guests">Expected Guests</label>
+                        <select id="enquiry-guests">
+                            <option value="50-100">50 - 100 Guests</option>
+                            <option value="100-200">100 - 200 Guests</option>
+                            <option value="200-350">200 - 350 Guests</option>
+                            <option value="350-500">350 - 500 Guests</option>
+                            <option value="500+">500+ Guests</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="enquiry-type">Event Nature</label>
+                    <select id="enquiry-type">
+                        <option value="wedding">Wedding / Reception</option>
+                        <option value="birthday">Birthday Party / Gathering</option>
+                        <option value="corporate">Corporate Seminar / Meeting</option>
+                        <option value="other">Other Celebration</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="enquiry-requirements">Special Setup Requirements (Optional)</label>
+                    <textarea id="enquiry-requirements" rows="3" placeholder="Stage decor, custom catering, audio-visual setups..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold btn-block">Send Banquet Enquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Toast -->
+    <div id="toast" class="toast">
+        <div class="toast-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="toast-content">
+            <h4 id="toast-title">Request Submitted!</h4>
+            <p id="toast-msg">We have received your details and will call you back shortly.</p>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <!-- Mobile Bottom Action Bar -->
+    <div class="mobile-action-bar">
+        <a href="tel:09581756678" class="action-btn call-action">
+            <i class="fa-solid fa-phone"></i> Call Now
+        </a>
+        <button class="action-btn book-action open-booking-btn">
+            <i class="fa-solid fa-calendar-days"></i> Book Stay
+        </button>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script type="module" src="script.js"></script>
+</body>
 </html>
