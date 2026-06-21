@@ -1973,7 +1973,10 @@ a {
 .toast {
     position: fixed;
     bottom: 40px;
-    right: -420px;
+    right: 40px;
+    transform: translateX(450px);
+    opacity: 0;
+    pointer-events: none;
     background-color: var(--bg-card);
     border: 1px solid var(--gold-primary);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
@@ -1988,7 +1991,9 @@ a {
 }
 
 .toast.show {
-    right: 40px;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
 }
 
 .toast-icon {
@@ -2147,6 +2152,12 @@ a {
     .container {
         padding: 0 28px;
     }
+    .phone-link {
+        display: none;
+    }
+    .nav-menu {
+        gap: 14px;
+    }
     .booking-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -2209,14 +2220,23 @@ a {
     .container {
         padding: 0 20px;
     }
-    .nav-menu, .nav-actions .phone-link, .nav-actions .btn {
-        display: none;
+    .nav-menu,
+    .nav-actions .phone-link,
+    .nav-actions .btn,
+    .nav-actions .nav-login-btn,
+    #header-user-menu,
+    #header-login-btn {
+        display: none !important;
     }
     .mobile-menu-toggle {
         display: block;
     }
     .header-container {
-        height: 72px;
+        height: 64px;
+    }
+    .logo-svg {
+        width: 36px;
+        height: 36px;
     }
     .hero-section {
         padding: 120px 0 60px;
@@ -2315,9 +2335,14 @@ a {
         right: 20px;
         max-width: none;
         bottom: 85px; /* Stay clear of mobile bottom bar */
+        transform: translateY(150px) translateX(0);
+        opacity: 0;
+        pointer-events: none;
     }
     .toast.show {
-        right: 20px;
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+        pointer-events: all;
     }
     
     /* Reveal Mobile Action Bar */
@@ -2713,5 +2738,322 @@ a {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   User Auth & Login Modal Styles
+   ========================================== */
+.modal-auth {
+    max-width: 460px !important;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(205, 164, 94, 0.15);
+    margin-bottom: 24px;
+}
+
+.auth-tab-btn {
+    flex: 1;
+    padding: 14px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.auth-tab-btn.active {
+    color: var(--gold-primary);
+    border-bottom: 2px solid var(--gold-primary);
+}
+
+.auth-pane {
+    display: none;
+}
+
+.auth-pane.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.demo-login-box {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-dark);
+    text-align: center;
+}
+
+.demo-login-box p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+/* ==========================================
+   User Dashboard Modal Styles
+   ========================================== */
+.modal-dashboard {
+    max-width: 720px !important;
+    padding: 40px !important;
+}
+
+.dashboard-user-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 30px;
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(205, 164, 94, 0.1);
+    border: 1px solid var(--border-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--gold-primary);
+    box-shadow: 0 0 15px rgba(205, 164, 94, 0.1);
+}
+
+.user-meta {
+    flex: 1;
+}
+
+.user-meta h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 18px;
+    color: var(--gold-primary);
+    margin-bottom: 4px;
+}
+
+.user-meta p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.user-meta p i {
+    width: 16px;
+    color: var(--gold-secondary);
+}
+
+.dashboard-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(205, 164, 94, 0.1);
+    padding-bottom: 12px;
+}
+
+.dash-tab {
+    padding: 10px 16px;
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-fast);
+}
+
+.dash-tab:hover, .dash-tab.active {
+    color: var(--gold-primary);
+    background-color: rgba(205, 164, 94, 0.05);
+    border-color: rgba(205, 164, 94, 0.25);
+}
+
+.dash-pane {
+    display: none;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.dash-pane.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+/* Custom scrollbar for dashboard pane */
+.dash-pane::-webkit-scrollbar {
+    width: 4px;
+}
+.dash-pane::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+.dash-pane::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+    border-radius: 2px;
+}
+.dash-pane::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-primary);
+}
+
+.dash-records-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dash-record-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-fast);
+}
+
+.dash-record-card:hover {
+    border-color: rgba(205, 164, 94, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.record-main {
+    flex: 1;
+}
+
+.record-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.record-title-row h4 {
+    font-family: 'Marcellus', serif;
+    font-size: 15px;
+    color: var(--text-cream);
+}
+
+.record-id {
+    font-size: 11px;
+    color: var(--gold-primary);
+    background-color: rgba(205, 164, 94, 0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-family: monospace;
+}
+
+.record-details {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.record-details span i {
+    margin-right: 6px;
+    color: var(--gold-secondary);
+}
+
+.record-status-col {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.record-status-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.record-status-badge.paid, .record-status-badge.confirmed {
+    background-color: rgba(78, 217, 100, 0.1);
+    border: 1px solid #4ed964;
+    color: #4ed964;
+}
+
+.record-status-badge.pending {
+    background-color: rgba(255, 159, 28, 0.1);
+    border: 1px solid #ff9f1c;
+    color: #ff9f1c;
+}
+
+.record-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-cream);
+}
+
+.dash-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+}
+
+.dash-empty-state i {
+    font-size: 40px;
+    color: rgba(205, 164, 94, 0.15);
+    margin-bottom: 16px;
+}
+
+.dash-empty-state p {
+    font-size: 13px;
+}
+
+.header-user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+/* Auth responsive layout */
+@media (max-width: 576px) {
+    .modal-dashboard {
+        padding: 30px 20px !important;
+    }
+    .dashboard-user-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px;
+    }
+    .dashboard-tabs {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .dash-tab {
+        flex: 1 1 calc(50% - 6px);
+        justify-content: center;
+    }
+    .dash-record-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .record-status-col {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 12px;
+        border-top: 1px solid var(--border-dark);
+    }
 }
 

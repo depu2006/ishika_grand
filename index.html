@@ -120,38 +120,6 @@
         
         <div class="container hero-container">
             <div class="hero-content fade-in-up">
-                <!-- Large Glowing Lotus Logo -->
-                <div class="hero-logo-wrapper">
-                    <svg viewBox="0 0 200 200" class="hero-logo-svg">
-                        <defs>
-                            <linearGradient id="gold-grad-large" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#fff4d0" />
-                                <stop offset="50%" stop-color="#d4af37" />
-                                <stop offset="100%" stop-color="#a88434" />
-                            </linearGradient>
-                            <filter id="glow-heavy" x="-20%" y="-20%" width="140%" height="140%">
-                                <feGaussianBlur stdDeviation="3" result="blur1" />
-                                <feGaussianBlur stdDeviation="1.5" result="blur2" />
-                                <feMerge>
-                                    <feMergeNode in="blur1" />
-                                    <feMergeNode in="blur2" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        <!-- Glowing lotus petals -->
-                        <g fill="url(#gold-grad-large)" filter="url(#glow-heavy)">
-                            <path d="M 100,105 C 83,82 83,48 100,15 C 117,48 117,82 100,105 Z" />
-                            <path d="M 94,105 C 60,99 43,77 49,49 C 60,71 77,88 94,105 Z" />
-                            <path d="M 106,105 C 140,99 157,77 151,49 C 140,71 123,88 106,105 Z" />
-                        </g>
-                        <!-- Glowing Telugu Text -->
-                        <text x="100" y="152" font-family="'Noto Sans Telugu', sans-serif" font-size="36" font-weight="bold" fill="url(#gold-grad-large)" text-anchor="middle" filter="url(#glow-heavy)">ఇషిక</text>
-                        <!-- Subtext -->
-                        <text x="100" y="185" font-family="'Inter', sans-serif" font-size="14" font-weight="600" letter-spacing="6" fill="#ffe29a" text-anchor="middle">GRAND</text>
-                    </svg>
-                </div>
-
                 <span class="hero-subtitle">WELCOME TO GOLDEN HOSPITALITY</span>
                 <h1 class="hero-title">A Sanctuary of Comfort <br>& Elegance in Hyderabad</h1>
                 <p class="hero-description">Experience premium rooms, exquisite multi-cuisine dining, and magnificent banquet spaces tailored to your special moments.</p>
@@ -1129,6 +1097,122 @@
                 </div>
                 <button type="submit" class="btn btn-gold btn-block">Send Banquet Enquiry</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Login / Registration Modal -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content modal-auth">
+            <button class="close-modal-btn">&times;</button>
+            
+            <div class="auth-tabs">
+                <button id="tab-auth-login" class="auth-tab-btn active">Sign In</button>
+                <button id="tab-auth-register" class="auth-tab-btn">Register</button>
+            </div>
+            
+            <!-- Login Form Pane -->
+            <div id="auth-pane-login" class="auth-pane active">
+                <div class="modal-header">
+                    <h2>Welcome Back</h2>
+                    <p>Log in to manage bookings and secure payments.</p>
+                </div>
+                <form id="login-form" class="luxury-form">
+                    <div class="form-group">
+                        <label for="login-email">Email Address / Phone</label>
+                        <input type="text" id="login-email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-block">Sign In</button>
+                </form>
+                <div class="demo-login-box">
+                    <p>For quick testing, use our simulated guest account:</p>
+                    <button type="button" class="btn btn-outline btn-block" id="btn-demo-login"><i class="fa-solid fa-magic"></i> Auto-fill Demo Account</button>
+                </div>
+            </div>
+            
+            <!-- Register Form Pane -->
+            <div id="auth-pane-register" class="auth-pane">
+                <div class="modal-header">
+                    <h2>Create Account</h2>
+                    <p>Join Ishika Grand Guest Club for exclusive benefits.</p>
+                </div>
+                <form id="register-form" class="luxury-form">
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="register-email">Email Address</label>
+                            <input type="email" id="register-email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-phone">Phone Number</label>
+                            <input type="tel" id="register-phone" placeholder="9581756678" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-block">Register & Join</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Dashboard / My Bookings Modal -->
+    <div id="dashboard-modal" class="modal-overlay">
+        <div class="modal-content modal-dashboard">
+            <button class="close-modal-btn">&times;</button>
+            <div class="modal-header">
+                <h2>My Account Dashboard</h2>
+                <p>Manage your luxury stays, dining reservations, and events.</p>
+            </div>
+            
+            <div class="dashboard-user-card">
+                <div class="user-avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div class="user-meta">
+                    <h3 id="dashboard-user-name">Guest User</h3>
+                    <p><i class="fa-regular fa-envelope"></i> <span id="dashboard-user-email">guest@example.com</span></p>
+                    <p><i class="fa-solid fa-phone"></i> <span id="dashboard-user-phone">+91 95817 56678</span></p>
+                </div>
+                <button id="btn-logout" class="btn btn-outline btn-sm"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+            </div>
+            
+            <div class="dashboard-tabs">
+                <button class="dash-tab active" data-tab="dash-rooms"><i class="fa-solid fa-bed"></i> Room Stays</button>
+                <button class="dash-tab" data-tab="dash-tables"><i class="fa-solid fa-utensils"></i> Dining Tables</button>
+                <button class="dash-tab" data-tab="dash-banquets"><i class="fa-solid fa-champagne-glasses"></i> Banquet Events</button>
+            </div>
+            
+            <div class="dashboard-tab-content">
+                <!-- Rooms Tab Pane -->
+                <div id="dash-rooms" class="dash-pane active">
+                    <div id="dash-rooms-list" class="dash-records-list">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+                
+                <!-- Tables Tab Pane -->
+                <div id="dash-tables" class="dash-pane">
+                    <div id="dash-tables-list" class="dash-records-list">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+                
+                <!-- Banquets Tab Pane -->
+                <div id="dash-banquets" class="dash-pane">
+                    <div id="dash-banquets-list" class="dash-records-list">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
